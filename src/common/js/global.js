@@ -7,5 +7,5 @@ if (webName == "") {
 else {
   path = window.location.protocol + '//' + window.location.host + '/' + webName+'/';
 }
-export const localurl =  path;
-// export const localurl = 'http://123.56.216.54:8080/user_monitor/';
+// export const localurl =  path;
+export const localurl = 'http://123.56.216.54:8080/user_monitor/';

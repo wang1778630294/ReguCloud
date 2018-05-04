@@ -6,12 +6,12 @@
     <el-container>
       <el-aside width="450px" class="trackquery-aside">
         <el-container class="trackquery-table">
-          <el-header height="160px" class="common-clearpadding">
+          <el-header height="160px" class="common-clearpadding" style="padding: 0;">
+            <div style="margin-top: 10px">
             <el-date-picker
-              style="margin-top: 10px"
               v-model="startTimer"
               type="datetime"
-              placeholder="开始日期"
+              placeholder="开始ss日期"
               value-format="timestamp">
             </el-date-picker>
             <el-date-picker
@@ -22,7 +22,9 @@
               placeholder="结束日期"
               value-format="timestamp">
             </el-date-picker>
-            <el-select style="margin-top:10px" v-model="deviceId" clearable placeholder="请选择用户">
+            </div>
+            <div style="margin-top: 10px">
+            <el-select v-model="deviceId" clearable placeholder="请选择用户">
               <el-option
                 v-for="user in $store.state.table.userData"
                 :key="user.deviceId"
@@ -30,7 +32,7 @@
                 :value="user.deviceId">
               </el-option>
             </el-select>
-            <el-select style="margin-top: 10px;" v-model="duration" placeholder="选择时间范围">
+            <el-select v-model="duration" placeholder="选择时间范围">
               <el-option
                 v-for="item in timeoptions"
                 :key="item.value"
@@ -38,6 +40,7 @@
                 :value="item.value">
               </el-option>
             </el-select>
+            </div>
             <el-button size="small" style="margin-top: 10px;" type="primary" @click="getHistoryLinemap()">查询个人轨迹图</el-button>
           </el-header>
           <el-main class="common-clearpadding">
@@ -66,7 +69,6 @@
 <script type="text/ecmascript-6">
   import {localurl} from "common/js/global";
   import axios from 'axios';
-  import Qs from 'qs';
   export default {
     data() {
       return {
