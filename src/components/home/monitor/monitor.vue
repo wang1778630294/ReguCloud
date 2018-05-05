@@ -68,7 +68,6 @@
       },
       prompt(){
         let data = this.$store.state.table.userAllData;
-        console.log(data);
         for (let i=0; i<data.length; i++) {
           if (data[i].user.currentStatus == 2) {
             this.$message({
