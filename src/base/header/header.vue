@@ -11,7 +11,6 @@
       <el-menu-item class="el-item" index="2"> <i class="el-icon-message"></i> </el-menu-item>
       <el-menu-item class="el-item" index="3"> <i class="el-icon-warning"></i> </el-menu-item>
       <el-menu-item class="el-item" index="4"><i class="el-icon-setting"></i></el-menu-item>
-
     </el-menu>
   </div>
 </template>

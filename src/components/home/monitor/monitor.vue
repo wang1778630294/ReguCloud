@@ -51,14 +51,46 @@
         keyword:''
       }
     },
+    computed:{
+      userAllData(){
+        return this.$store.state.table.userAllData;
+      }
+    },
+    watch: {
+      userAllData:function () {
+        this.prompt();
+      }
+    },
     methods: {
       markerState(state){
         this.$store.table.userState = state;
         this.$store.dispatch('get_user_all');
+      },
+      prompt(){
+        let data = this.$store.state.table.userAllData;
+        console.log(data);
+        for (let i=0; i<data.length; i++) {
+          if (data[i].user.currentStatus == 2) {
+            this.$message({
+              showClose: true,
+              message: data[i].user.userName+' 消失了',
+              duration: 0,
+              type: 'warning'
+            });
+          }
+          if (data[i].user.currentStatus == 3) {
+            this.$message({
+              showClose: true,
+              message: '越界了',
+              duration: 0,
+              type: 'error'
+            });
+          }
+        }
       }
     },
     mounted(){
-
+      console.log(this.$store.state.table.userAllData);
     }
   }
 </script>
