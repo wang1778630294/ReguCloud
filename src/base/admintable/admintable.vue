@@ -3,12 +3,12 @@
     <el-table
       :data="$store.state.table.userData">
       <el-table-column
-        prop="deviceId"
-        label="编号">
-      </el-table-column>
-      <el-table-column
         prop="userName"
         label="姓名">
+      </el-table-column>
+      <el-table-column
+        prop="deviceId"
+        label="编号">
       </el-table-column>
       <el-table-column
         prop="userGroup"
@@ -23,6 +23,7 @@
           <el-button
             size="mini"
             type="danger"
+            :disabled="true"
             @click="handleDelete(scope.$index, scope.row)">删除</el-button>
         </template>
       </el-table-column>

@@ -11,7 +11,7 @@
             <el-date-picker
               v-model="startTimer"
               type="datetime"
-              placeholder="开始ss日期"
+              placeholder="开始日期"
               value-format="timestamp">
             </el-date-picker>
             <el-date-picker
@@ -50,7 +50,7 @@
             <div class="home-page">
               <el-pagination
                 layout="prev, pager, next"
-                :total="1000">
+                :total="10">
               </el-pagination>
             </div>
           </el-footer>

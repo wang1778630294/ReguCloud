@@ -7,7 +7,8 @@ const state = {
   fromValue: '',
   formGroup: '',
   userAllData: [],
-  userState: 0
+  userState: 0,
+  active: ''
 };
 
 export default {

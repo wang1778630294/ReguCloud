@@ -4,14 +4,15 @@
         :data="$store.state.table.userAllData"
         border>
         <el-table-column
-          prop="user.deviceId"
-          label="编号">
-        </el-table-column>
-        <el-table-column
           prop="user.userName"
           label="姓名"
           width="80">
         </el-table-column>
+        <el-table-column
+          prop="user.deviceId"
+          label="编号">
+        </el-table-column>
+
         <el-table-column
           width="80"
           label="状态">
@@ -67,7 +68,8 @@
         },
         methods: {
           share: function (index,data) {
-
+            this.$router.push({path:'/usermanage'});
+            this.$store.state.table.active = 'usermanage';
           }
         },
         mounted(){

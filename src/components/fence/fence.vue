@@ -38,6 +38,7 @@
                     <el-button
                       @click.native.prevent="del(scope.$index, scope.row)"
                       type="text"
+                      :disabled="true"
                       size="small">
                       &nbsp; <i class="el-icon-delete"></i>
                     </el-button>
@@ -130,21 +131,23 @@
     methods:{
       selectRow(row){
         this.clearCan();
-        let cvs = document.getElementById('fencecanvas'); //画布
-        let ctx = cvs.getContext('2d'); // 画笔
-        ctx.beginPath();
+        linecanvas = null;
+        linectx = null;
+        linecanvas = document.getElementById('fencecanvas'); //画布
+        linectx = linecanvas.getContext('2d'); // 画笔
+        linectx.beginPath();
         let resdata = row.fenceData.split(',');
         let statLine = resdata[0].split('/');
-        ctx.moveTo(Number(statLine[0]),Number(statLine[1]));
+        linectx.moveTo(Number(statLine[0]),Number(statLine[1]));
         for (let i = 1; i < resdata.length-1; i++){
             let linedata = resdata[i].split('/');
-            ctx.lineTo(Number(linedata[0]), Number(linedata[1]));
+          linectx.lineTo(Number(linedata[0]), Number(linedata[1]));
             if (i == resdata.length-2) {
-              ctx.lineTo(Number(statLine[0]), Number(statLine[1]));
+              linectx.lineTo(Number(statLine[0]), Number(statLine[1]));
             }
-            ctx.lineWidth = 1;
-            ctx.strokeStyle = 'red';
-            ctx.stroke();
+          linectx.lineWidth = 1;
+          linectx.strokeStyle = 'red';
+          linectx.stroke();
         }
       },
       del(index,item){
@@ -240,8 +243,10 @@
       },
       clearCan(){
         if (fenceArr.length>0) {
-          linectx.clearRect(0,0,linecanvas.width,linecanvas.height);
           fenceArr = [];
+        }
+        if (linectx) {
+          linectx.clearRect(0,0,linecanvas.width,linecanvas.height);
         }
       },
       drawCom(){

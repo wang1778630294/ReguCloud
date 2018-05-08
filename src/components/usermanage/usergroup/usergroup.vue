@@ -20,13 +20,14 @@
       <el-table
         :data="userGroupData">
         <el-table-column
-          prop="id"
-          label="编号">
-        </el-table-column>
-        <el-table-column
           prop="userGroup"
           label="用户组名称">
         </el-table-column>
+        <el-table-column
+          prop="id"
+          label="编号">
+        </el-table-column>
+
         <el-table-column
           prop="fenceIds"
           label="用户分组编号">
@@ -40,6 +41,7 @@
             <el-button
               size="mini"
               type="danger"
+              :disabled="true"
               @click="handleDelete(scope.$index, scope.row)">删除</el-button>
           </template>
         </el-table-column>
@@ -52,7 +54,7 @@
       <div class="page" style="width: 400px;margin: 0 auto;">
         <el-pagination
           layout="prev, pager, next"
-          :total="1000">
+          :total="10">
         </el-pagination>
       </div>
     </el-footer>

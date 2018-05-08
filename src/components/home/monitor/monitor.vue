@@ -29,7 +29,7 @@
             <div class="home-page">
               <el-pagination
                 layout="prev, pager, next"
-                :total="1000">
+                :total="10">
               </el-pagination>
             </div>
           </el-footer>
@@ -58,7 +58,7 @@
     },
     watch: {
       userAllData:function () {
-        this.prompt();
+        // this.prompt();
       }
     },
     methods: {
@@ -66,27 +66,27 @@
         this.$store.table.userState = state;
         this.$store.dispatch('get_user_all');
       },
-      prompt(){
-        let data = this.$store.state.table.userAllData;
-        for (let i=0; i<data.length; i++) {
-          if (data[i].user.currentStatus == 2) {
-            this.$message({
-              showClose: true,
-              message: data[i].user.userName+' 消失了',
-              duration: 0,
-              type: 'warning'
-            });
-          }
-          if (data[i].user.currentStatus == 3) {
-            this.$message({
-              showClose: true,
-              message: '越界了',
-              duration: 0,
-              type: 'error'
-            });
-          }
-        }
-      }
+      // prompt(){
+      //   let data = this.$store.state.table.userAllData;
+      //   for (let i=0; i<data.length; i++) {
+      //     if (data[i].user.currentStatus == 2) {
+      //       this.$message({
+      //         showClose: true,
+      //         message: data[i].user.userName+' 消失了',
+      //         duration: 0,
+      //         type: 'warning'
+      //       });
+      //     }
+      //     if (data[i].user.currentStatus == 3) {
+      //       this.$message({
+      //         showClose: true,
+      //         message: '越界了',
+      //         duration: 0,
+      //         type: 'error'
+      //       });
+      //     }
+      //   }
+      // }
     },
     mounted(){
       console.log(this.$store.state.table.userAllData);

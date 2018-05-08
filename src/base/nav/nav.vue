@@ -6,7 +6,8 @@
             style="height: 100%;"
             default-active="2"
             class="el-menu-vertical-demo"
-            :default-active="active"
+            :default-active="$store.state.table.active"
+            @select="selectNav"
             @open="handleOpen"
             @close="handleClose">
             <el-submenu index="1">
@@ -67,7 +68,7 @@
     export default {
         data() {
             return {
-              active:''
+
             }
         },
         methods:{
@@ -77,15 +78,18 @@
           handleClose:function () {
 
           },
+          selectNav:function (index) {
+            this.$store.state.table.active = index;
+          },
           reouterTo: function (pth) {
             this.$router.push({path:pth});
           },
           activeEle:function () {
             let localurl = (window.location.href).split('/');
             if(localurl[localurl.length-1]){
-              this.active = localurl[localurl.length-1];
+              this.$store.state.table.active = localurl[localurl.length-1];
             }else {
-              this.active = 'monitor';
+              this.$store.state.table.active = 'monitor';
             }
 
           }

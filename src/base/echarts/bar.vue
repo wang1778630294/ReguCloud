@@ -1,20 +1,26 @@
 <template>
     <div id="cus-bar">
       <el-row>
-        <el-col :span="6">
+        <el-col :span="8">
           <el-table
-            :data="tableData">
+            :data="$store.state.table.userAllData"
+            height="350"
+            >
+
             <el-table-column
-              prop="date"
-              label="编号">
-            </el-table-column>
-            <el-table-column
-              prop="name"
+              prop="user.userName"
               label="姓名">
             </el-table-column>
+
+            <el-table-column
+              prop="user.deviceId"
+              width="180"
+              label="编号">
+            </el-table-column>
+
           </el-table>
         </el-col>
-        <el-col :span="18">
+        <el-col :span="16">
           <div id="barCharts"></div>
         </el-col>
       </el-row>
@@ -86,6 +92,7 @@
         },
         mounted(){
           this.initBar();
+
         }
     }
 </script>

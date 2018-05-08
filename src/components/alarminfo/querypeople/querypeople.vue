@@ -4,10 +4,10 @@
         <cus-floor></cus-floor>
       </el-header>
       <el-row>
-        <el-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12">
+        <el-col :xs="24" :sm="24" :md="24" :lg="14" :xl="14">
           <cus-gauge></cus-gauge>
         </el-col>
-        <el-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12">
+        <el-col :xs="24" :sm="24" :md="24" :lg="10" :xl="10">
           <cus-line></cus-line>
         </el-col>
       </el-row>
@@ -28,13 +28,16 @@
             return {
 
             }
+        },
+        mounted(){
+          this.$store.dispatch('get_user_all');
         }
     }
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
 #admin-query
-  width 100%
+  width 98%
   height 100%
 </style>
 

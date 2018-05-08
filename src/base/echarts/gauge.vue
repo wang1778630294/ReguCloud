@@ -1,28 +1,40 @@
 <template>
     <div id="admin-gauge">
       <el-row>
-        <el-col :span="9">
+        <el-col :span="8">
           <div id="myChart" style="width: 300px;height: 300px;"></div>
         </el-col>
-        <el-col :span="15">
+        <el-col :span="16">
           <el-table
-            :data="tableData"
+            :data="$store.state.table.userAllData"
+            height="350"
             border
           >
+
             <el-table-column
-              prop="date"
-              label="编号">
-            </el-table-column>
-            <el-table-column
-              prop="name"
+              prop="user.userName"
               label="姓名">
             </el-table-column>
+
             <el-table-column
-              prop="state"
+              prop="user.deviceId"
+              label="编号"
+              width="180"
+            >
+            </el-table-column>
+
+            <el-table-column
+              width="80"
               label="状态">
+              <template slot-scope="scope">
+                <el-tag v-if="scope.row.user.currentStatus==1" size="medium">{{ scope.row.user.currentStatus | currentStatus}}</el-tag>
+                <el-tag v-if="scope.row.user.currentStatus==2" type="warning" size="medium">{{ scope.row.user.currentStatus | currentStatus}}</el-tag>
+                <el-tag v-if="scope.row.user.currentStatus==3" type="danger" size="medium">{{ scope.row.user.currentStatus | currentStatus}}</el-tag>
+              </template>
             </el-table-column>
             <el-table-column
-              prop="tag"
+              prop="user.statusUpdateTime"
+              width="180"
               label="时间">
               <!--<template slot-scope="scope">-->
                 <!--&nbsp; <i @click.native.prevent="deleteRow(scope.$index, tableData)" class="el-icon-setting"></i>-->
@@ -55,6 +67,11 @@
                 tag: '12:00'
               }]
             }
+        },
+        filters: {
+          currentStatus: function (val) {
+            return val == 1 ? '正常' : val == 2 ? '消失' : '越界';
+          },
         },
         methods: {
             initGauge:function () {

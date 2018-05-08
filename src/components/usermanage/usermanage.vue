@@ -23,7 +23,7 @@
       <div class="page" style="width: 400px;margin: 0 auto;">
         <el-pagination
           layout="prev, pager, next"
-          :total="1000">
+          :total="10">
         </el-pagination>
       </div>
     </el-footer>

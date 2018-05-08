@@ -53,6 +53,12 @@
           <div v-if="!realOrHistory" id="realheatmap" style="width: 877px;height: 410px;">
             <canvas id="realheat_canvas" width="877" height="410"></canvas>
           </div>
+          <div class="legcon">
+            <span class="min">最小值:1 </span>
+            <div class="legend"></div>
+            <span class="max"> 最大值:5</span>
+          </div>
+
         </el-main>
       </el-container>
     </el-container>
@@ -156,13 +162,13 @@
                 let point = {
                   x: Math.floor(value[len].position.corx),
                   y: Math.floor(value[len].position.cory),
-                  value: 10
+                  value: 1
                 };
                 points.push(point);
               }
             }
             let data = {
-              max: 50,
+              max: 5,
               data: points
             };
             this.heatmapInstance.setData(data);
@@ -206,6 +212,26 @@
   #admin-heatmap
     width 100%
     height 100%
+    .legcon
+      margin-left 95px
+      overflow hidden
+      .min
+        float left
+        display inline-block
+        height 30px
+        line-height 30px
+      .max
+        float left
+        display inline-block
+        height 30px
+        line-height 30px
+      .legend
+        width 200px
+        height 30px
+        background linear-gradient(to right, rgba(0,0,255,0.1),rgba(0,128,0,0.8),yellow,rgba(255,0,0,0.9));
+        float left
+        margin 0 10px
+
     .heatmap-aside
       border-right 1px solid #e6e6e6
       .heatmap-switch
